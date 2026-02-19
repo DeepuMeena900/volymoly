@@ -3,6 +3,12 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Front\PageController;
+use App\Http\Controllers\Api\Front\ServiceController;
+use App\Http\Controllers\Api\Front\ProjectController;
+use App\Http\Controllers\Api\Front\ContactController;
+
+// admin v1
+use App\Http\Controllers\Api\V1\Admin\AuthController as ApiAdminAuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,4 +43,12 @@ Route::prefix('v1')->group(function () {
 
     // Contact
     Route::post('/contact', [ContactController::class, 'store']);
+});
+
+
+// admin v1
+Route::prefix('v1/admin')->group(function () {
+
+    Route::post('/login', [ApiAdminAuthController::class, 'login']);
+
 });
